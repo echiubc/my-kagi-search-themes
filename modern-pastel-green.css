@@ -402,3 +402,71 @@ nav .active {
     color: var(--link-color) !important;
     border-color: var(--pastel-accent) !important;
 }
+
+/* ==========================================================================
+   Desktop Search Bubble Restoration
+   Keeps mobile search bar exactly as-is.
+   ========================================================================== */
+
+@media (min-width: 768px) {
+    /* On desktop, let the outer container act as layout only. */
+    .search-form-container {
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    /* Recreate the visible desktop search bubble on the inner search container. */
+    .search-input-container {
+        background-color: var(--search-bar-bg) !important;
+        border: 1px solid var(--accent-border) !important;
+        border-radius: 999px !important;
+        box-shadow: var(--shadow-search) !important;
+        box-sizing: border-box !important;
+
+        min-height: 48px !important;
+        padding: 0 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    /* Keep deeper wrappers invisible so only one desktop bubble appears. */
+    .search-input-wrapper,
+    .search-form,
+    .control-center-search-form,
+    .search-form fieldset,
+    .search-form-container fieldset {
+        background: transparent !important;
+        background-color: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        outline: none !important;
+        border-radius: 0 !important;
+    }
+
+    .search-input,
+    #search-input,
+    .search-form-container input[type="text"],
+    .search-form input[type="search"] {
+        height: 48px !important;
+        line-height: 48px !important;
+        font-size: 16px !important;
+        padding-left: 12px !important;
+        padding-right: 10px !important;
+    }
+
+    .search-form-container button,
+    .search-form button,
+    .search-input-wrapper button {
+        height: 48px !important;
+        min-width: 42px !important;
+        padding: 0 8px !important;
+    }
+}
