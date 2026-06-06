@@ -9,55 +9,71 @@
    ========================================================================== */
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #f8f3ff 0%, #f1e9ff 100%);
+    --bg-gradient: linear-gradient(135deg, #f6f4fa 0%, #f0ebf7 100%);
     --bg-card: #ffffff;
 
-    --text-main: #2e2438;
-    --text-muted: #6b5d78;
+    --text-main: #2b2433;
+    --text-muted: #6b6675;
 
-    --pastel-accent: #c9a7ff;
-    --pastel-accent-strong: #8a5ad8;
+    --pastel-accent: #c7a2f2;
+    --pastel-accent-strong: #a26cd9;
 
-    --link-color: #6f43b8;
-    --link-visited: #8a6ac8;
+    --link-color: #6a3fa6;
+    --link-visited: #855eb3;
 
-    --accent-border: #e4d6f5;
-    --search-bar-bg: #fffaff;
-    --favicon-bg: #f3eaff;
+    --accent-border: #e8def2;
+    --search-bar-bg: #ffffff;
+    --favicon-bg: #f6edf7;
 
-    --shadow-card: 0 4px 10px rgba(86, 45, 138, 0.05);
-    --shadow-card-hover: 0 10px 18px rgba(86, 45, 138, 0.08);
-    --shadow-search: 0 8px 24px rgba(86, 45, 138, 0.06);
+    --shadow-card: 0 4px 10px rgba(68, 30, 84, 0.05);
+    --shadow-card-hover: 0 10px 18px rgba(68, 30, 84, 0.08);
+    --shadow-search: 0 8px 24px rgba(68, 30, 84, 0.06);
 
     --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* ==========================================================================
-   Dark Mode Variables
+   Dark Mode Variables (Desktop & Mobile Fixes Applied)
    ========================================================================== */
 
+/* 1. Applies when the OS is set to dark mode (unless Kagi is forced to light) */
 @media (prefers-color-scheme: dark) {
-    :root {
-        --bg-gradient: linear-gradient(135deg, #17121f 0%, #20182c 100%);
-        --bg-card: #271e35;
-
-        --text-main: #f7efff;
-        --text-muted: #bdaed0;
-
-        --pastel-accent: #c9a7ff;
-        --pastel-accent-strong: #b58cff;
-
-        --link-color: #d2b5ff;
-        --link-visited: #e0ccff;
-
-        --accent-border: #44345c;
-        --search-bar-bg: #2e2440;
-        --favicon-bg: #382b4d;
-
+    html:not([data-theme="light"]):not([data-theme="auto-light"]) {
+        --bg-gradient: linear-gradient(135deg, #17121a 0%, #1c1521 100%);
+        --bg-card: #221826;
+        --text-main: #f8f5fa;
+        --text-muted: #b3a8bd;
+        --pastel-accent: #bd85e6;
+        --pastel-accent-strong: #a26cd9;
+        --link-color: #cca3f2;
+        --link-visited: #dabcf7;
+        --accent-border: #382a42;
+        --search-bar-bg: #2a1d30;
+        --favicon-bg: #32223b;
         --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.16);
         --shadow-card-hover: 0 10px 18px rgba(0, 0, 0, 0.22);
         --shadow-search: 0 8px 24px rgba(0, 0, 0, 0.22);
     }
+}
+
+/* 2. Applies when Kagi's UI is explicitly set to dark mode (overriding OS) */
+html[data-theme="dark"],
+html[data-theme="moon"],
+html.theme_dark {
+        --bg-gradient: linear-gradient(135deg, #17121a 0%, #1c1521 100%);
+        --bg-card: #221826;
+        --text-main: #f8f5fa;
+        --text-muted: #b3a8bd;
+        --pastel-accent: #bd85e6;
+        --pastel-accent-strong: #a26cd9;
+        --link-color: #cca3f2;
+        --link-visited: #dabcf7;
+        --accent-border: #382a42;
+        --search-bar-bg: #2a1d30;
+        --favicon-bg: #32223b;
+        --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.16);
+        --shadow-card-hover: 0 10px 18px rgba(0, 0, 0, 0.22);
+        --shadow-search: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 /* ==========================================================================
@@ -224,10 +240,8 @@ html,
 
 /* ==========================================================================
    Search Input Elements
-   Mobile fix: reset all nested wrappers, then draw exactly one pill.
    ========================================================================== */
 
-/* First, remove duplicate borders/backgrounds from every nested search wrapper. */
 .search-form,
 .control-center-search-form,
 .search-input-container,
@@ -245,7 +259,6 @@ html,
     box-sizing: border-box !important;
 }
 
-/* Remove pseudo-element outlines that can appear on mobile. */
 .search-form::before,
 .search-form::after,
 .control-center-search-form::before,
@@ -260,7 +273,6 @@ html,
     outline: none !important;
 }
 
-/* Draw the visible search bar only on the outer container. */
 .search-form-container {
     background-color: var(--search-bar-bg) !important;
     border: 1px solid var(--accent-border) !important;
@@ -270,7 +282,6 @@ html,
     overflow: hidden !important;
 }
 
-/* Keep the inner layout aligned without adding visual layers. */
 .search-form,
 .control-center-search-form,
 .search-input-container,
@@ -281,7 +292,6 @@ html,
     min-width: 0 !important;
 }
 
-/* Text input itself. */
 .search-input,
 #search-input,
 .search-form-container input[type="text"],
@@ -302,7 +312,6 @@ html,
     padding-right: 10px !important;
 }
 
-/* Search, clear, and icon buttons. */
 .search-form-container button,
 .search-form button,
 .search-input-wrapper button,
@@ -322,7 +331,6 @@ html,
     color: var(--text-muted) !important;
 }
 
-/* Desktop search bar sizing. */
 @media (min-width: 768px) {
     .search-form-container {
         min-height: 48px !important;
@@ -338,7 +346,6 @@ html,
     }
 }
 
-/* Mobile-specific correction for the duplicated pill outline. */
 @media (max-width: 767px) {
     .search-form-container {
         min-height: 64px !important;
@@ -405,11 +412,9 @@ nav .active {
 
 /* ==========================================================================
    Desktop Search Bubble Restoration
-   Keeps mobile search bar exactly as-is.
    ========================================================================== */
 
 @media (min-width: 768px) {
-    /* On desktop, let the outer container act as layout only. */
     .search-form-container {
         background: transparent !important;
         background-color: transparent !important;
@@ -420,7 +425,6 @@ nav .active {
         padding: 0 !important;
     }
 
-    /* Recreate the visible desktop search bubble on the inner search container. */
     .search-input-container {
         background-color: var(--search-bar-bg) !important;
         border: 1px solid var(--accent-border) !important;
@@ -437,7 +441,6 @@ nav .active {
         overflow: hidden !important;
     }
 
-    /* Keep deeper wrappers invisible so only one desktop bubble appears. */
     .search-input-wrapper,
     .search-form,
     .control-center-search-form,
