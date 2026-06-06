@@ -470,3 +470,561 @@ nav .active {
         padding: 0 8px !important;
     }
 }
+
+/* ==========================================================================
+   Kagi System Default Theme Fix
+   Colour-only patch. Keeps existing desktop and mobile layout rules unchanged.
+
+   Purpose:
+   - Manual Kagi Light uses light palette.
+   - Manual Kagi Dark uses dark palette.
+   - Kagi System Default / Auto follows the computer theme.
+   - Result dates and video result boxes use matching theme colours.
+   ========================================================================== */
+
+/* Light palette, including Kagi's own internal colour variables. */
+:root,
+.theme_light,
+html.theme_light,
+body.theme_light,
+[data-theme="light"],
+[data-color-scheme="light"] {
+    --bg-gradient: linear-gradient(135deg, #fff4f6 0%, #ffecef 100%) !important;
+    --bg-card: #ffffff !important;
+
+    --text-main: #3a2025 !important;
+    --text-muted: #765b60 !important;
+
+    --pastel-accent: #ff9aad !important;
+    --pastel-accent-strong: #d94f68 !important;
+
+    --link-color: #b83d55 !important;
+    --link-visited: #c16a79 !important;
+
+    --accent-border: #f3d6dc !important;
+    --search-bar-bg: #fffafa !important;
+    --favicon-bg: #ffe8ed !important;
+
+    --shadow-card: 0 4px 10px rgba(132, 38, 58, 0.05) !important;
+    --shadow-card-hover: 0 10px 18px rgba(132, 38, 58, 0.08) !important;
+    --shadow-search: 0 8px 24px rgba(132, 38, 58, 0.06) !important;
+
+    --k-background-primary: #fff4f6 !important;
+    --k-surface-primary: #ffffff !important;
+    --k-surface-secondary: #fffafa !important;
+    --k-surface-tertiary: #ffe8ed !important;
+    --k-border: #f3d6dc !important;
+
+    --k-foreground-primary: #3a2025 !important;
+    --k-foreground-secondary: #5f3f46 !important;
+    --k-foreground-tertiary: #765b60 !important;
+    --k-foreground-quaternary: #9b7c83 !important;
+
+    --background-color: var(--k-background-primary) !important;
+    --page-text-color: var(--k-foreground-tertiary) !important;
+    --header-bg: var(--k-background-primary) !important;
+    --header-border: var(--k-border) !important;
+
+    --color-primary: var(--k-foreground-primary) !important;
+    --color-secondary: var(--k-foreground-tertiary) !important;
+    --color-primary_hover: var(--pastel-accent-strong) !important;
+    --color-primary_visited: var(--link-visited) !important;
+    --color_link: var(--link-color) !important;
+
+    --input-bg: var(--search-bar-bg) !important;
+    --search-result-title: var(--link-color) !important;
+    --search-result-title-hover: var(--pastel-accent-strong) !important;
+    --search-result-content-text: var(--text-muted) !important;
+    --search-result-url-link: var(--pastel-accent-strong) !important;
+    --search-result-group-item-link: var(--link-color) !important;
+    --result-item-title-border: var(--accent-border) !important;
+    --result-item-title-border_hover: var(--pastel-accent-strong) !important;
+
+    --search-result-date-bg: #ffe8ed !important;
+    --search-result-date-new-bg: #ffe0e7 !important;
+    --search-result-date-new: #a73f55 !important;
+
+    --inline-widget-bg: var(--bg-card) !important;
+    --inline-header-title: var(--text-main) !important;
+    --inline-header-border: var(--accent-border) !important;
+    --inline-domain-tag-bg: #ffe8ed !important;
+    --related-item-bg: #fffafa !important;
+    --video-item-bg: var(--bg-card) !important;
+    --m_sri_gap_color: var(--accent-border) !important;
+    --auto-sugg-bg: var(--search-bar-bg) !important;
+    --auto-sugg-bg_hover: #ffe8ed !important;
+
+    color-scheme: light !important;
+}
+
+/* Dark palette for manual dark mode. */
+.theme_dark,
+html.theme_dark,
+body.theme_dark,
+[class~="theme_dark"],
+[data-theme="dark"],
+[data-color-scheme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #1c1114 0%, #261419 100%) !important;
+    --bg-card: #2d1b20 !important;
+
+    --text-main: #fff0f3 !important;
+    --text-muted: #d0a8b0 !important;
+
+    --pastel-accent: #ff9aad !important;
+    --pastel-accent-strong: #ff7f98 !important;
+
+    --link-color: #ffa6b8 !important;
+    --link-visited: #ffc0cc !important;
+
+    --accent-border: #51303a !important;
+    --search-bar-bg: #352026 !important;
+    --favicon-bg: #40262e !important;
+
+    --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.16) !important;
+    --shadow-card-hover: 0 10px 18px rgba(0, 0, 0, 0.22) !important;
+    --shadow-search: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+
+    --k-background-primary: #1c1114 !important;
+    --k-surface-primary: #2d1b20 !important;
+    --k-surface-secondary: #352026 !important;
+    --k-surface-tertiary: #40262e !important;
+    --k-border: #51303a !important;
+
+    --k-foreground-primary: #fff0f3 !important;
+    --k-foreground-secondary: #f1c8d0 !important;
+    --k-foreground-tertiary: #d0a8b0 !important;
+    --k-foreground-quaternary: #a9828b !important;
+
+    --background-color: var(--k-background-primary) !important;
+    --page-text-color: var(--k-foreground-tertiary) !important;
+    --header-bg: var(--k-background-primary) !important;
+    --header-border: var(--k-border) !important;
+
+    --color-primary: var(--k-foreground-primary) !important;
+    --color-secondary: var(--k-foreground-tertiary) !important;
+    --color-primary_hover: var(--pastel-accent-strong) !important;
+    --color-primary_visited: var(--link-visited) !important;
+    --color_link: var(--link-color) !important;
+
+    --input-bg: var(--search-bar-bg) !important;
+    --search-result-title: var(--link-color) !important;
+    --search-result-title-hover: var(--pastel-accent-strong) !important;
+    --search-result-content-text: var(--text-muted) !important;
+    --search-result-url-link: var(--pastel-accent-strong) !important;
+    --search-result-group-item-link: var(--link-color) !important;
+    --result-item-title-border: var(--accent-border) !important;
+    --result-item-title-border_hover: var(--pastel-accent-strong) !important;
+
+    --search-result-date-bg: #40262e !important;
+    --search-result-date-new-bg: #4a2933 !important;
+    --search-result-date-new: #ffc0cc !important;
+
+    --inline-widget-bg: var(--bg-card) !important;
+    --inline-header-title: var(--text-main) !important;
+    --inline-header-border: var(--accent-border) !important;
+    --inline-domain-tag-bg: #40262e !important;
+    --related-item-bg: #352026 !important;
+    --video-item-bg: var(--bg-card) !important;
+    --m_sri_gap_color: var(--accent-border) !important;
+    --auto-sugg-bg: var(--search-bar-bg) !important;
+    --auto-sugg-bg_hover: #40262e !important;
+
+    color-scheme: dark !important;
+}
+
+/* System Default / Auto: follow the computer's light mode. */
+@media (prefers-color-scheme: light) {
+    .theme_auto,
+    html.theme_auto,
+    body.theme_auto,
+    [data-theme="auto"],
+    [data-color-scheme="auto"],
+    [data-theme="system"],
+    [data-color-scheme="system"] {
+        --bg-gradient: linear-gradient(135deg, #fff4f6 0%, #ffecef 100%) !important;
+        --bg-card: #ffffff !important;
+        --text-main: #3a2025 !important;
+        --text-muted: #765b60 !important;
+        --pastel-accent: #ff9aad !important;
+        --pastel-accent-strong: #d94f68 !important;
+        --link-color: #b83d55 !important;
+        --link-visited: #c16a79 !important;
+        --accent-border: #f3d6dc !important;
+        --search-bar-bg: #fffafa !important;
+        --favicon-bg: #ffe8ed !important;
+        --shadow-card: 0 4px 10px rgba(132, 38, 58, 0.05) !important;
+        --shadow-card-hover: 0 10px 18px rgba(132, 38, 58, 0.08) !important;
+        --shadow-search: 0 8px 24px rgba(132, 38, 58, 0.06) !important;
+
+        --k-background-primary: #fff4f6 !important;
+        --k-surface-primary: #ffffff !important;
+        --k-surface-secondary: #fffafa !important;
+        --k-surface-tertiary: #ffe8ed !important;
+        --k-border: #f3d6dc !important;
+        --k-foreground-primary: #3a2025 !important;
+        --k-foreground-secondary: #5f3f46 !important;
+        --k-foreground-tertiary: #765b60 !important;
+        --k-foreground-quaternary: #9b7c83 !important;
+
+        --background-color: var(--k-background-primary) !important;
+        --page-text-color: var(--k-foreground-tertiary) !important;
+        --header-bg: var(--k-background-primary) !important;
+        --header-border: var(--k-border) !important;
+        --color-primary: var(--k-foreground-primary) !important;
+        --color-secondary: var(--k-foreground-tertiary) !important;
+        --color-primary_hover: var(--pastel-accent-strong) !important;
+        --color-primary_visited: var(--link-visited) !important;
+        --color_link: var(--link-color) !important;
+        --input-bg: var(--search-bar-bg) !important;
+        --search-result-title: var(--link-color) !important;
+        --search-result-title-hover: var(--pastel-accent-strong) !important;
+        --search-result-content-text: var(--text-muted) !important;
+        --search-result-url-link: var(--pastel-accent-strong) !important;
+        --search-result-group-item-link: var(--link-color) !important;
+        --result-item-title-border: var(--accent-border) !important;
+        --result-item-title-border_hover: var(--pastel-accent-strong) !important;
+        --search-result-date-bg: #ffe8ed !important;
+        --search-result-date-new-bg: #ffe0e7 !important;
+        --search-result-date-new: #a73f55 !important;
+        --inline-widget-bg: var(--bg-card) !important;
+        --inline-header-title: var(--text-main) !important;
+        --inline-header-border: var(--accent-border) !important;
+        --inline-domain-tag-bg: #ffe8ed !important;
+        --related-item-bg: #fffafa !important;
+        --video-item-bg: var(--bg-card) !important;
+        --m_sri_gap_color: var(--accent-border) !important;
+        --auto-sugg-bg: var(--search-bar-bg) !important;
+        --auto-sugg-bg_hover: #ffe8ed !important;
+        color-scheme: light !important;
+    }
+}
+
+/* System Default / Auto: follow the computer's dark mode.
+   Explicit .theme_light is excluded so manual Light still stays light. */
+@media (prefers-color-scheme: dark) {
+    :root:not(.theme_light),
+    html:not(.theme_light),
+    body:not(.theme_light),
+    .theme_auto,
+    html.theme_auto,
+    body.theme_auto,
+    [data-theme="auto"],
+    [data-color-scheme="auto"],
+    [data-theme="system"],
+    [data-color-scheme="system"] {
+        --bg-gradient: linear-gradient(135deg, #1c1114 0%, #261419 100%) !important;
+        --bg-card: #2d1b20 !important;
+        --text-main: #fff0f3 !important;
+        --text-muted: #d0a8b0 !important;
+        --pastel-accent: #ff9aad !important;
+        --pastel-accent-strong: #ff7f98 !important;
+        --link-color: #ffa6b8 !important;
+        --link-visited: #ffc0cc !important;
+        --accent-border: #51303a !important;
+        --search-bar-bg: #352026 !important;
+        --favicon-bg: #40262e !important;
+        --shadow-card: 0 4px 10px rgba(0, 0, 0, 0.16) !important;
+        --shadow-card-hover: 0 10px 18px rgba(0, 0, 0, 0.22) !important;
+        --shadow-search: 0 8px 24px rgba(0, 0, 0, 0.22) !important;
+
+        --k-background-primary: #1c1114 !important;
+        --k-surface-primary: #2d1b20 !important;
+        --k-surface-secondary: #352026 !important;
+        --k-surface-tertiary: #40262e !important;
+        --k-border: #51303a !important;
+        --k-foreground-primary: #fff0f3 !important;
+        --k-foreground-secondary: #f1c8d0 !important;
+        --k-foreground-tertiary: #d0a8b0 !important;
+        --k-foreground-quaternary: #a9828b !important;
+
+        --background-color: var(--k-background-primary) !important;
+        --page-text-color: var(--k-foreground-tertiary) !important;
+        --header-bg: var(--k-background-primary) !important;
+        --header-border: var(--k-border) !important;
+        --color-primary: var(--k-foreground-primary) !important;
+        --color-secondary: var(--k-foreground-tertiary) !important;
+        --color-primary_hover: var(--pastel-accent-strong) !important;
+        --color-primary_visited: var(--link-visited) !important;
+        --color_link: var(--link-color) !important;
+        --input-bg: var(--search-bar-bg) !important;
+        --search-result-title: var(--link-color) !important;
+        --search-result-title-hover: var(--pastel-accent-strong) !important;
+        --search-result-content-text: var(--text-muted) !important;
+        --search-result-url-link: var(--pastel-accent-strong) !important;
+        --search-result-group-item-link: var(--link-color) !important;
+        --result-item-title-border: var(--accent-border) !important;
+        --result-item-title-border_hover: var(--pastel-accent-strong) !important;
+        --search-result-date-bg: #40262e !important;
+        --search-result-date-new-bg: #4a2933 !important;
+        --search-result-date-new: #ffc0cc !important;
+        --inline-widget-bg: var(--bg-card) !important;
+        --inline-header-title: var(--text-main) !important;
+        --inline-header-border: var(--accent-border) !important;
+        --inline-domain-tag-bg: #40262e !important;
+        --related-item-bg: #352026 !important;
+        --video-item-bg: var(--bg-card) !important;
+        --m_sri_gap_color: var(--accent-border) !important;
+        --auto-sugg-bg: var(--search-bar-bg) !important;
+        --auto-sugg-bg_hover: #40262e !important;
+        color-scheme: dark !important;
+    }
+}
+
+/* Apply the resolved palette to Kagi's major surfaces. */
+body,
+html,
+.kagi-search-body,
+.app,
+#app,
+main,
+.page,
+.content,
+.search-content,
+.search-results,
+.results,
+.results-container {
+    background: var(--bg-gradient) !important;
+    background-attachment: fixed !important;
+    color: var(--text-main) !important;
+}
+
+/* Search result surfaces, including Kagi's current internal result classes. */
+.search-result,
+.__sri,
+.__srgi,
+.sri-group,
+.sitelinks-container,
+.sub-results-container,
+.searchResultAnswer,
+.widgetItem,
+.inline-widget,
+.widgetContent,
+.k_ui_card {
+    background-color: var(--bg-card) !important;
+    border-color: var(--accent-border) !important;
+    color: var(--text-main) !important;
+}
+
+.search-result,
+.__sri,
+.__srgi {
+    border-left-color: var(--pastel-accent) !important;
+}
+
+/* Titles and result links. */
+.search-result a:link,
+.search-result .res-title,
+.search-result .res-title *,
+.search-result a.__sr-title,
+.search-result a.__sr-title *,
+.__sri-title .__sri_title_link,
+.__sri-title .__sri_title_link *,
+.__srgi-title,
+.__srgi-title *,
+.searchResultAnswerTitle,
+.searchResultAnswerTitle * {
+    color: var(--link-color) !important;
+}
+
+.search-result a:visited,
+.search-result a:visited *,
+.__sri-title .__sri_title_link:visited,
+.__sri-title .__sri_title_link:visited *,
+.__srgi a:visited,
+.__srgi a:visited * {
+    color: var(--link-visited) !important;
+}
+
+/* Snippets and secondary text. */
+.search-result .res-snippet,
+.search-result .res-snippet *,
+.search-result .short-desc,
+.search-result .short-desc *,
+.search-result .description,
+.search-result .description *,
+.search-result .desc,
+.search-result .desc *,
+.search-result .snippet,
+.search-result .snippet *,
+.__sri-desc,
+.__sri-desc *,
+.__sri-body,
+.__sri-body *,
+.__srgi-desc,
+.__srgi-desc *,
+.__srgi-body,
+.__srgi-body *,
+.searchResultAnswerSnippet,
+.searchResultAnswerSnippet *,
+.searchResultAnswerDescription,
+.searchResultAnswerDescription *,
+.search-stats,
+.search-stats *,
+.result-count,
+.result-count *,
+.results-info,
+.results-info * {
+    color: var(--text-muted) !important;
+}
+
+/* URLs, domains, paths. */
+.search-result .path,
+.search-result .path *,
+.search-result .res-url-domain,
+.search-result .res-url-domain *,
+.search-result cite,
+.search-result cite *,
+.__sri-url,
+.__sri-url *,
+.__sri-url-box,
+.__sri-url-box *,
+.__sri-domain,
+.__sri-domain *,
+.__srgi-url,
+.__srgi-url *,
+.domain,
+.domain * {
+    color: var(--pastel-accent-strong) !important;
+}
+
+/* Dates under results. */
+.__sri-time,
+.__sri-time *,
+.__sri-date,
+.__sri-date *,
+.search-result-date,
+.search-result-date *,
+.searchResultAnswerDate,
+.searchResultAnswerDate *,
+.result-date,
+.result-date *,
+.search-result [class*="time"],
+.search-result [class*="time"] *,
+.search-result [class*="date"],
+.search-result [class*="date"] * {
+    background-color: var(--search-result-date-bg) !important;
+    color: var(--search-result-date-new) !important;
+    border-color: var(--accent-border) !important;
+}
+
+/* Video result boxes. */
+.videoResultItem,
+.videoResultItem *,
+.videoResult,
+.videoResult *,
+.video-result,
+.video-result *,
+.search-result [class*="videoResult"],
+.search-result [class*="videoResult"] *,
+.search-result [class*="VideoResult"],
+.search-result [class*="VideoResult"] * {
+    background-color: var(--video-item-bg) !important;
+    border-color: var(--accent-border) !important;
+    color: var(--text-muted) !important;
+}
+
+.videoResultItem a,
+.videoResultItem a *,
+.videoResult a,
+.videoResult a *,
+.video-result a,
+.video-result a *,
+.search-result [class*="videoResult"] a,
+.search-result [class*="videoResult"] a *,
+.search-result [class*="VideoResult"] a,
+.search-result [class*="VideoResult"] a * {
+    color: var(--link-color) !important;
+}
+
+/* Form and controls colour only. Existing layout rules remain authoritative. */
+.search-form-container,
+.search-input-container,
+.search-input-wrapper,
+.search-form,
+.control-center-search-form,
+.auto_suggestions,
+.auto-suggestions-container {
+    color: var(--text-main) !important;
+}
+
+.search-form-container,
+.search-input-container {
+    border-color: var(--accent-border) !important;
+}
+
+.search-input,
+#search-input,
+.search-form-container input[type="text"],
+.search-form input[type="search"],
+input[type="search"],
+input[type="text"] {
+    color: var(--text-main) !important;
+    caret-color: var(--pastel-accent-strong) !important;
+}
+
+.search-input::placeholder,
+#search-input::placeholder,
+.search-form-container input::placeholder,
+.search-form input::placeholder,
+input[type="search"]::placeholder,
+input[type="text"]::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.85 !important;
+}
+
+/* Navigation, filters, and buttons. */
+.search-tabs,
+.search-tabs *:not(.active):not(.active *),
+.search-filters,
+.search-filters *:not(.active):not(.active *),
+.filters,
+.filters *:not(.active):not(.active *),
+.filter,
+.filter *:not(.active):not(.active *),
+.k_ui_tabs,
+.k_ui_tabs *:not(.active):not(.active *),
+.quick-answer,
+.quick-answer *,
+.quick-answer-button,
+.quick-answer-button *,
+nav,
+nav *:not(.active):not(.active *) {
+    color: var(--text-muted) !important;
+    border-color: var(--accent-border) !important;
+}
+
+.search-tabs .active,
+.search-tabs .active *,
+.search-filters .active,
+.search-filters .active *,
+.filters .active,
+.filters .active *,
+.filter.active,
+.filter.active *,
+.k_ui_tabs .active,
+.k_ui_tabs .active *,
+nav .active,
+nav .active * {
+    color: var(--link-color) !important;
+    border-color: var(--pastel-accent) !important;
+}
+
+button,
+button *,
+.k_ui_button,
+.k_ui_button *,
+.search-form-container button,
+.search-form-container button *,
+.search-form button,
+.search-form button *,
+.search-input-wrapper button,
+.search-input-wrapper button * {
+    color: var(--text-muted) !important;
+    border-color: var(--accent-border) !important;
+}
+
+.favicon,
+.res-favicon-container,
+.search-result img[class*="favicon"] {
+    background-color: var(--favicon-bg) !important;
+}
