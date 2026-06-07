@@ -1,0 +1,81 @@
+/* Kagi Ultra-Dense Functional Theme - Verdana */
+
+/* Global Typography & Structure */
+* {
+  font-family: Verdana, Geneva, sans-serif !important;
+  border-radius: 0 !important;
+}
+
+:root {
+  /* Extreme density variables */
+  --result-gap: 4px !important;
+  --result-padding: 0 !important;
+  --sri-gap: 0px !important;
+}
+
+#main {
+  padding-top: 5px !important;
+}
+
+/* Search results spacing & dividers */
+.search-result, .sri-group {
+  margin-bottom: 4px !important;
+  padding-bottom: 4px !important;
+  border-bottom: 1px solid var(--color-border) !important;
+}
+
+/* Title typography */
+.search-result h3, .__sri-title a, .__sri-title {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  line-height: 1.1 !important;
+  margin: 0 0 1px 0 !important;
+  padding: 0 !important;
+}
+
+/* URL and breadcrumbs */
+.__sri-url {
+  margin-bottom: 1px !important;
+  font-size: 12px !important;
+  line-height: 1.1 !important;
+}
+
+/* Favicon alignment */
+.__sri-url .__domain-favicon,
+.favicon {
+  display: inline-block !important; /* Brings the favicon back */
+  width: 14px !important; 
+  height: 14px !important;
+  vertical-align: middle !important;
+  transform: translateY(-2px) !important; /* Tweak this value (-1px, -3px, etc.) for perfect alignment */
+  margin-right: 5px !important; /* Adds a tiny bit of breathing room before the text */
+}
+
+/* Snippet typography */
+.search-result p, .__sri-desc, .sm {
+  font-size: 13px !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+
+/* Compact the search bar */
+.search-form {
+  padding: 2px !important;
+  margin-bottom: 8px !important;
+}
+
+.search-input {
+  height: 28px !important;
+  font-size: 14px !important;
+  padding: 0 6px !important;
+}
+
+/* Compress right-side information panels */
+.sidebar {
+  padding-top: 0 !important;
+}
+
+.sidebar .widget {
+  padding: 4px 6px !important;
+  margin-bottom: 6px !important;
+}
